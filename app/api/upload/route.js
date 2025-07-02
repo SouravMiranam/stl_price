@@ -22,7 +22,7 @@ export async function POST(req) {
 
     // 👇 Docker exec: shared volume maps file inside prusaslicer as /data/filename
     const filename = file.name;
-    const command = `docker exec prusaslicer prusa-slicer /data/${filename} --load /config.ini --gcode-comments --export-gcode`;
+    const command = `prusa-slicer /app/uploads/${filename} --load /app/prusaconfig.ini --gcode-comments --export-gcode`;
 
     return new Promise((resolve) => {
       exec(command, async (err, stdout, stderr) => {
